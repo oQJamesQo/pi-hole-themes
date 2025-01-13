@@ -1,0 +1,638 @@
+/*
+  - Description: Darklee, A dark mode custom theme for pi-hole based on my themes for VSCode, Visual Studio and Chrome with the same name. 
+  - Objective: Reduced use of shades of blue. 
+  - Version: 0.0.1
+  - Status: WIP, pre alpha. Checkbox and radio button looks depend on a modification to javascript used by the UI.
+  - Author: oQJamesQo
+  - Started: Jan 11, 2025
+*/
+
+:root {
+  /* color defs */
+  --color-main: #888884;
+  --color-main-highlight: #bfbfbb;
+  --color-primary-01: #32174d;
+  --color-primary-01-highlight: #422066;
+  --color-secondary: #787870;
+  --color-highlight: #289a3f;
+  --color-danger: #c02010;
+  --color-warning: #805010;
+  --color-dark-00: #000000;
+  --color-dark-01: #020201;
+  --color-dark-02: #040402;
+  --color-dark-03: #060604;
+  --color-dark-04: #080806;
+  --color-dark-05: #0a0a08;
+  --color-dark-06: #0c0c0a;
+  --color-dark-07: #0e0e0c;
+  --color-dark-08: #10100e;
+  --color-dark-09: #181816;
+  --color-dark-0a: #20201e;
+  --color-dark-0b: #282826;
+  --color-dark-0c: #30302e;
+  --color-dark-0d: #383836;
+  --color-dark-0e: #40403e;
+  --color-dark-0f: #484846;
+  --color-dark-10: #50504e;
+  --color-dark-medium: #646462;
+  --color-light-medium: #aebeac;
+  --color-green-01: #042002;
+  --color-green-03: #186a3f;
+  --color-green-05: #0f521f;
+  --color-disabled: #666666;
+  --color-code: #cc9b0a;
+  /* bg colors*/
+  --color-bg-main: var(--color-dark-01);
+  --color-bg-box: var(--color-dark-03);
+  --color-bg-content: var(--color-dark-04);
+  --color-bg-table: var(--color-dark-05);
+  --color-bg-forms: var(--color-dark-05);
+  --color-bg-navtabs: var(--color-dark-06);
+  --color-bg-table-stripe: var(--color-dark-06);
+  --color-bg-input: var(--color-dark-0a);
+  --color-bg-input-addon: var(--color-dark-0c);
+  --color-bg-disabled: var(--color-dark-04);
+  --color-bg-warning: var(--color-warning);
+  --color-bg-surface-primary: var(--color-primary-01);
+  --color-bg-surface-default: var(--color-dark-0c);
+  --color-bg-surface-default-active: var(--color-dark-10);
+  --color-bg-success: var(--color-green-01);
+  --color-bg-btn-hover: var(--color-primary-01-highlight);
+  /* fg colors*/
+  --color-text-primary: var(--color-main-highlight);
+  --color-text-link: var(--color-green-03);
+  --color-text-green: var(--color-green-05);
+  --color-text-default: var(--color-light-medium);
+  /* border colors*/
+  --color-border-main: var(--color-dark-medium);
+  --color-border-input: var(--color-light-medium);
+  --color-border-active-tab: var(--color-green-05);
+  --color-border-tab: var(--color-dark-06);
+  --color-border-table: var(--color-dark-0a);
+  --color-border-box-top: var(--color-dark-0a);
+  /* disabled colors*/
+  --disabled-inner: var(--color-disabled);
+  /* misc colors*/
+  --color-separator-line: var(--color-dark-05);
+  --color-testing: var(--color-danger);
+}
+
+html {
+  color-scheme: dark;
+}
+
+html,
+body {
+  background-color: var(--color-bg-main);
+  border-color: var(--color-border-main);
+  color: var(--color-main);
+}
+
+a {
+  color: var(--color-text-link);
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: var(--color-highlight);
+  }
+}
+
+code {
+  color: var(--color-code);
+  background-color: transparent;
+}
+
+pre {
+  background-color: var(--color-bg-box);
+  border: none;
+}
+
+pre code {
+  color: inherit;
+  background-color: transparent;
+}
+
+footer.main-footer {
+  color: var(--color-text-default);
+  background-color: var(--color-bg-content);
+  border-top: 1px solid var(--color-border-box-top);
+}
+
+.content-wrapper,
+.content {
+  background-color: var(--color-bg-content);
+}
+
+.box,
+.box-footer {
+  background-color: var(--color-bg-box);
+  border-top: 1px solid var(--color-border-box-top);
+
+  .box-body {
+    padding: 1rem;
+    background-color: var(--color-bg-box);
+  }
+
+  .box-title {
+    color: var(--color-main);
+  }
+
+  .box-header.with-border,
+  .page-header {
+    border-bottom-color: var(--color-separator-line);
+  }
+
+  &.box-warning {
+    border-top-color: var(--color-bg-warning);
+  }
+}
+
+.sidebar-menu {
+
+  li {
+    &.active:hover>a {
+      color: var(--color-highlight);
+    }
+
+    &.active>a {
+      background-color: var(--color-bg-content);
+      color: var(--color-main-highlight);
+    }
+  }
+}
+
+.nav-tabs-custom {
+  background-color: var(--color-bg-navtabs);
+
+  .tab-content {
+    background-color: var(--color-bg-table);
+
+    .tab-pane>.row {
+      margin: 0px;
+      padding-top: 15px;
+    }
+  }
+
+  .nav-tabs {
+    background-color: var(--color-bg-navtabs);
+    border-color: var(--color-border-tab);
+
+    li {
+      border-color: transparent;
+
+      a {
+        color: var(--color-main);
+        border-color: transparent;
+      }
+
+      &.active {
+        border-top-color: var(--color-border-active-tab);
+
+        a {
+          background-color: var(--color-bg-table);
+          color: var(--color-main-highlight);
+          border-left-color: var(--color-border-tab);
+          border-right-color: var(--color-border-tab);
+        }
+
+        &:hover>a {
+          background-color: var(--color-bg-navtabs);
+          color: var(--color-main-highlight);
+        }
+      }
+    }
+
+  }
+}
+
+.pagination>.disabled>a,
+.pagination>.disabled>a:focus,
+.pagination>.disabled>a:hover,
+.pagination>.disabled>span,
+.pagination>.disabled>span:focus,
+.pagination>.disabled>span:hover {
+  color: var(--color-disabled);
+  cursor: not-allowed;
+  background-color: var(--color-bg-disabled);
+  border-color: var(--color-border-table);
+}
+
+.pagination>.active>a,
+.pagination>.active>a:focus,
+.pagination>.active>a:hover,
+.pagination>.active>span,
+.pagination>.active>span:focus,
+.pagination>.active>span:hover {
+  z-index: 3;
+  cursor: default;
+  background-color: var(--color-bg-surface-primary);
+  border: var(--color-border-table);
+}
+
+.pagination>li>a,
+.pagination>li>span {
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  margin-left: -1px;
+  line-height: 1.42857143;
+  text-decoration: none;
+  background-color: var(--color-bg-box);
+  color: var(--color-text-primary);
+  border: solid 1px var(--color-border-table);
+
+  &:hover {
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-surface-default);
+    border: none;
+  }
+}
+
+.table {
+  background-color: var(--color-bg-table);
+}
+
+.table-bordered {
+  border-color: var(--color-border-table);
+}
+
+.table-striped tbody tr:nth-of-type(2n + 1) {
+  background-color: var(--color-bg-table-stripe);
+}
+
+table.dataTable,
+.table {
+
+  thead,
+  tbody,
+  tfoot {
+    tr {
+      &.selected {
+        background-color: var(--color-bg-surface-default-active);
+        background-image: none;
+      }
+
+      th,
+      td {
+        vertical-align: middle;
+        border-color: var(--color-border-table);
+
+        &.select-checkbox {
+
+          &::before,
+          &::after {
+            top: 50%;
+          }
+        }
+      }
+
+      th {
+        border-bottom: none;
+      }
+    }
+  }
+}
+
+.form-group {
+  background-color: var(--color-bg-forms);
+}
+
+.form-control {
+  background-color: var(--color-bg-input);
+  border: none;
+  color: var(--color-text-primary);
+
+  &::placeholder {
+    color: var(--color-secondary);
+  }
+
+  &:focus {
+    border: solid 1px var(--color-highlight);
+  }
+
+  &:disabled,
+  &:read-only,
+  &[disabled],
+  &[read-only] {
+    background-color: var(--color-bg-disabled);
+  }
+}
+
+.input-group {
+  div.input-group-addon {
+    border: none;
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-input-addon);
+  }
+}
+
+.select2-container--default {
+
+  .select2-dropdown,
+  .select2-selection--single,
+  .select2-selection--multiple,
+  .select2-selection--multiple .select2-selection__choice,
+  .select2-results__option[aria-selected="true"],
+  .select2-results__option--highlighted[aria-selected] {
+    background-color: var(--color-bg-input);
+    border: none;
+  }
+
+}
+
+.btn {
+  border: none;
+  color: var(--color-main-highlight);
+
+  &:hover {
+    background-color: var(--color-bg-btn-hover);
+    color: var(--color-main-highlight);
+    border: none;
+  }
+
+  .active {
+    &:hover {
+      background-color: var(--color-bg-btn-hover);
+      color: var(--color-main-highlight);
+      border: none;
+    }
+  }
+}
+
+.btn-primary {
+  background-color: var(--color-bg-surface-primary);
+  border: solid 1px var(--color-primary-01-highlight);
+}
+
+.btn-danger {
+  background-color: var(--color-danger);
+  color: var(--color-dark-00);
+}
+
+.btn-warning {
+  color: var(--color-dark-00);
+}
+
+.btn-default {
+  background-color: var(--color-bg-surface-default);
+
+  .active {
+    background-color: var(--color-bg-surface-default-active);
+    color: var(--color-main-highlight);
+  }
+}
+
+.btn-success {
+  background-color: var(--color-bg-success);
+  color: var(--color-light-medium);
+}
+
+/*
+  - copied from https: //github.com/MichalSvatos/pi-hole-star-trek-picard/blob/main/lcars-picard.css 
+  - begin
+*/
+/* --- Table related buttons (select all, select more, delete) */
+div.dt-buttons {
+  margin: var(--gap) 0;
+}
+
+.dt-buttons .datatable-bt span {
+  font-size: inherit;
+}
+
+.dt-buttons .selectAll,
+.dt-buttons .removeAll,
+.dt-buttons .selectMore {
+  background-color: var(--color-bg-input);
+  color: var(--color-text-dark);
+}
+
+.dt-buttons .selectAll:hover,
+.dt-buttons .removeAll:hover,
+.dt-buttons .selectMore:hover {
+  background-color: var(--color-bg-surface-primary);
+}
+
+.dt-buttons .deleteSelected {
+  background-color: var(--color-danger);
+  color: #fff;
+}
+
+.dt-buttons .deleteSelected:hover {
+  background-color: var(--color-danger);
+}
+
+/* from original theme */
+.network-never {
+  background-color: var(--color-code);
+  color: var(--color-dark-00);
+}
+
+.network-recent {
+  background-color: var(--color-green-01);
+}
+
+.network-old {
+  background-color: var(--color-secondary);
+  color: var(--color-dark-00);
+}
+
+.network-older {
+  background-color: var(--color-dark-medium);
+  color: var(--color-dark-00);
+}
+
+.network-gradient {
+  background-image: linear-gradient(to right, rgb(32, 71, 0) 0%, rgb(70, 70, 0) 100%);
+  color: var(--color-dark-00);
+}
+
+/* Used in debug log page */
+.log-red {
+  color: var(--color-danger);
+}
+
+.log-green {
+  color: var(--color-green-05);
+}
+
+.log-yellow {
+  color: var(--color-code);
+}
+
+.log-blue {
+  color: var(--color-primary-01);
+}
+
+.log-purple {
+  color: var(--color-primary-01-highlight);
+}
+
+.log-cyan {
+  color: var(--color-highlight);
+}
+
+.log-gray {
+  color: var(--color-light-medium);
+}
+
+/*
+  - end
+  - Copied from https: //github.com/MichalSvatos/pi-hole-star-trek-picard/blob/main/lcars-picard.css 
+*/
+/*
+https: //codepen.io/aaroniker/pen/ZEYoxEY
+begin
+*/
+input[type='checkbox'],
+input[type='radio'] {
+  --focus: 2px transparent;
+  appearance: none;
+  height: 21px;
+  outline: none;
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  margin: 0;
+  cursor: pointer;
+  border: 1px solid var(--bc, var(--color-border-main));
+  background: var(--b, var(--color-bg-input));
+  transition: background .3s, border-color .3s, box-shadow .2s;
+
+  &:after {
+    content: '';
+    display: block;
+    left: 0;
+    top: 0;
+    position: absolute;
+    transition: transform var(--d-t, .3s) var(--d-t-e, ease), opacity var(--d-o, .2s);
+  }
+
+  &:checked {
+    --b: var(--color-bg-surface-primary);
+    --bc: var(--color-bg-surface-primary);
+    --d-o: .3s;
+    --d-t: .6s;
+    --d-t-e: cubic-bezier(.2, .85, .32, 1.2);
+  }
+
+  &:disabled {
+    --b: var(--color-disabled);
+    cursor: not-allowed;
+    opacity: .9;
+
+    &:checked {
+      --b: var(--disabled-inner);
+      --bc: var(--color-border-main);
+    }
+
+    &+label {
+      cursor: not-allowed;
+    }
+  }
+
+  &:hover {
+    &:not(:checked) {
+      &:not(:disabled) {
+        --bc: var(--color-bg-surface-primary);
+      }
+    }
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 var(--focus);
+  }
+
+  &:not(.switch) {
+    width: 21px;
+
+    &:after {
+      opacity: var(--o, 0);
+    }
+
+    &:checked {
+      --o: 1;
+    }
+  }
+
+  &+label {
+    font-size: 14px;
+    line-height: 21px;
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+    margin-left: 4px;
+  }
+}
+
+input[type='checkbox'] {
+  &:not(.switch) {
+    border-radius: 7px;
+
+    &:after {
+      width: 5px;
+      height: 9px;
+      border: 2px solid var(--color-text-primary);
+      border-top: 0;
+      border-left: 0;
+      left: 7px;
+      top: 4px;
+      transform: rotate(var(--r, 20deg));
+    }
+
+    &:checked {
+      --r: 43deg;
+    }
+  }
+
+  &.switch {
+    width: 38px;
+    border-radius: 11px;
+
+    &:after {
+      left: 2px;
+      top: 2px;
+      border-radius: 50%;
+      width: 15px;
+      height: 15px;
+      background: var(--ab, var(--color-border-main));
+      transform: translateX(var(--x, 0));
+    }
+
+    &:checked {
+      --ab: var(--color-text-primary);
+      --x: 17px;
+    }
+
+    &:disabled {
+      &:not(:checked) {
+        &:after {
+          opacity: .6;
+        }
+      }
+    }
+  }
+}
+
+input[type='radio'] {
+  border-radius: 50%;
+
+  &:after {
+    width: 19px;
+    height: 19px;
+    border-radius: 50%;
+    background: var(--color-text-primary);
+    opacity: 0;
+    transform: scale(var(--s, .7));
+  }
+
+  &:checked {
+    --s: .5;
+  }
+}
+
+/*
+end
+https: //codepen.io/aaroniker/pen/ZEYoxEY
+*/
