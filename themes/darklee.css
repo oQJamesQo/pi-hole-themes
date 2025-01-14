@@ -119,6 +119,11 @@ footer.main-footer {
   border-top: 1px solid var(--color-border-box-top);
 }
 
+.layout-boxed {
+  background-color: var(--color-bg-content);
+  background-image: none;
+}
+
 .content-wrapper,
 .content {
   background-color: var(--color-bg-content);
